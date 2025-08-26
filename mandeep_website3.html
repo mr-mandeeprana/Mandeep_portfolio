@@ -1,0 +1,483 @@
+<!--
+README (top of file)
+- File: index.html — single-file portfolio for Mandeep Rana.
+- To replace images/screenshots: find <img> tags with data SVG placeholders and replace `src` with your image path (recommended in /assets/images/).
+- To add your resume: place resume.pdf or resume.docx at /assets/resume.pdf (or update RESUME_PATH variable in the script).
+- Hostable on GitHub Pages as-is (push this file to repo's root or gh-pages branch).
+- Notes: External links open in new tabs with rel="noopener noreferrer". No backend required.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mandeep Rana — Data Analyst</title>
+  <meta name="description" content="Mandeep Rana — Data Analyst | B.Tech CSE | Data Visualization, Dashboards, SQL, Power BI, Tableau, Generative AI" />
+
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mandeep Rana — Data Analyst" />
+  <meta property="og:description" content="Data Analyst | B.Tech CSE | Dashboards, Power BI, Tableau, SQL, Generative AI" />
+  <meta property="og:image" content="https://example.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mandeep Rana — Data Analyst" />
+  <meta name="twitter:description" content="Data Analyst | B.Tech CSE | Dashboards, Power BI, Tableau, SQL, Generative AI" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mandeep Rana",
+    "jobTitle": "Data Analyst",
+    "url": "https://your-portfolio-domain.example/",
+    "sameAs": [
+      "https://github.com/mr-mandeeprana",
+      "https://www.linkedin.com/in/mandeep-rana-a169b8241/"
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ----------------- BASE / THEME ----------------- */
+    :root{
+      --bg: linear-gradient(135deg,#071028 0%, #001219 60%);
+      --card: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.06);
+      --accent: #00d4ff;
+      --muted: rgba(255,255,255,0.75);
+      --text: #e6eef8;
+      --container: 1100px;
+      --radius: 12px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.5}
+    a{color:inherit}
+    .container{max-width:var(--container);margin:0 auto;padding:28px}
+
+    /* ----------------- HEADER / NAV ----------------- */
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#6a00ff);
+      display:flex;align-items:center;justify-content:center;color:#00122b;font-weight:800;font-size:18px;
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);
+    }
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+    nav a:hover{background:rgba(255,255,255,0.03);color:var(--text)}
+    .cta{background:linear-gradient(90deg,var(--accent),#6a00ff);padding:8px 12px;border-radius:8px;color:#00122b;font-weight:700}
+
+    /* ----------------- HERO ----------------- */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;margin-top:18px}
+    .intro h1{font-size:30px;margin:0 0 8px}
+    .intro .sub{color:var(--accent);font-weight:700;margin-bottom:8px}
+    .intro p{color:var(--muted);margin:0 0 14px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:600;color:var(--muted)}
+
+    /* profile card */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);padding:16px;border:1px solid var(--glass-border);
+      box-shadow:0 8px 24px rgba(2,6,23,0.6);
+    }
+    .avatar{height:220px;border-radius:8px;background:linear-gradient(135deg,#031226,#07313b);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);text-align:center;padding:12px}
+
+    /* ----------------- SECTIONS ----------------- */
+    section{margin-top:26px}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    h3{margin:0 0 12px;font-size:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .projects-list, .links-list{display:grid;gap:12px}
+
+    /* skills pills */
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{padding:8px 12px;border-radius:999px;background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.03);font-weight:600;color:var(--muted)}
+
+    /* project item */
+    .project-item{display:flex;gap:12px;align-items:flex-start}
+    .thumb{width:100px;height:64px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#00252f,#00182a);color:var(--accent);font-weight:700}
+
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    /* footer */
+    footer{margin-top:34px;padding:18px 0;color:var(--muted);text-align:center}
+
+    /* ----------------- ANIMATIONS / INTERACTIONS ----------------- */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease, transform .65s cubic-bezier(.2,.9,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+    .tilt{transition:transform .28s cubic-bezier(.2,.9,.2,1)}
+    .tilt:hover{transform:translateY(-6px) scale(1.01)}
+    .float{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+    /* focus outlines for keyboard users */
+    :focus{outline:3px solid rgba(0,212,255,0.12);outline-offset:2px}
+    a:focus{outline:3px solid rgba(0,212,255,0.12);outline-offset:2px;border-radius:6px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:700px){
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main</a>
+
+  <div class="container" id="page-root">
+    <!-- HEADER -->
+    <header>
+      <div class="brand" aria-label="Brand">
+        <div class="logo" aria-hidden="true">MR</div>
+        <div>
+          <div style="font-weight:800">Mandeep Rana</div>
+          <div style="font-size:13px;color:var(--muted)">B.Tech CSE • Data Analyst</div>
+        </div>
+      </div>
+
+      <nav role="navigation" aria-label="Main Navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact" class="cta">Email</a>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="intro reveal" id="hero-heading">
+          <div class="sub">Data Analyst • B.Tech CSE — Frontend knowledge (HTML/CSS/JS)</div>
+          <h1>Hi — I'm <span style="color:var(--accent)">Mandeep Rana</span></h1>
+          <p>I specialize in data analytics and dashboards — building actionable visualizations in Power BI and Tableau, querying with SQL, and automating workflows with Generative AI (ChatGPT & related tools). I also have frontend web development experience (HTML/CSS/JavaScript).</p>
+
+          <div class="actions" style="margin-top:12px">
+            <a class="cta" href="#projects">See Projects</a>
+            <a class="tilt" href="mailto:mr.mandeeprana52@gmail.com">Email me</a>
+            <!-- Resume: expected /assets/resume.pdf; fallback to mailto if not present -->
+            <a id="download-resume" class="tilt badge" href="/assets/resume.pdf" download>Download Resume</a>
+          </div>
+
+          <div style="margin-top:14px">
+            <span class="badge">Open to work</span>
+            <span class="badge">Data Analytics</span>
+            <span class="badge">Generative AI</span>
+          </div>
+        </div>
+
+        <aside class="card tilt float" aria-labelledby="profile-card">
+          <div id="profile-card" class="avatar">
+            Mandeep Rana<br><span style="font-size:13px;color:var(--muted)">Data Analyst & Frontend</span>
+          </div>
+
+          <div style="margin-top:12px">
+            <div style="font-size:13px;color:var(--muted)">Location</div>
+            <div style="font-weight:700">Nittyanandpur Nagli, Bulandshahr</div>
+          </div>
+
+          <div style="margin-top:12px" class="meta">
+            <div style="margin-bottom:6px"><span style="color:var(--muted);font-size:13px">Phone</span><div style="font-weight:700">+91 86309 78119</div></div>
+            <div><span style="color:var(--muted);font-size:13px">Email</span><div style="font-weight:700"><a href="mailto:mr.mandeeprana52@gmail.com">mr.mandeeprana52@gmail.com</a></div></div>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+            <!-- Inline SVG icons -->
+            <a href="https://github.com/mr-mandeeprana" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.25.98 11.5c0 4.66 3.02 8.62 7.22 10.02.53.1.72-.23.72-.51 0-.25-.01-.92-.01-1.8-2.94.64-3.56-1.42-3.56-1.42-.48-1.23-1.17-1.56-1.17-1.56-.96-.66.07-.65.07-.65 1.06.08 1.62 1.09 1.62 1.09.94 1.6 2.47 1.14 3.07.87.1-.66.37-1.14.67-1.4-2.35-.27-4.82-1.17-4.82-5.2 0-1.15.41-2.08 1.09-2.81-.11-.27-.47-1.36.1-2.84 0 0 .9-.29 2.95 1.07A10.2 10.2 0 0112 6.15c.91.004 1.83.12 2.69.35 2.05-1.36 2.95-1.07 2.95-1.07.58 1.48.22 2.57.11 2.84.68.73 1.09 1.66 1.09 2.81 0 4.04-2.48 4.92-4.84 5.18.38.33.72.98.72 1.98 0 1.43-.01 2.58-.01 2.93 0 .28.19.61.73.51C19 .12 22 15.66 22 11.5 22 5.25 17.27.5 12 .5z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/mandeep-rana-a169b8241/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48c0 1.1.88 1.98 1.98 1.98h.02C6.08 7.46 6.96 6.58 6.96 5.48 6.96 4.38 6.08 3.5 4.98 3.5zM3.5 8.98h3v11.52h-3V8.98zM9.5 8.98h2.88v1.57h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2.01 3.6 4.62v6.88h-3V13.8c0-1.24-.02-2.83-1.72-2.83-1.72 0-1.98 1.34-1.98 2.73v6.83h-3V8.98z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/thakurmandeeprajput?igsh=MWU2bXVwazR5Mmh5Zg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.5A4.5 4.5 0 1016.5 13 4.5 4.5 0 0012 8.5zm4.9-3.4a1.1 1.1 0 11-1.1 1.1 1.1 1.1 0 011.1-1.1z"/></svg>
+            </a>
+            <a href="https://x.com/ThakurMandeepR3?t=QkpWEz76vVgREENQ8nA7FQ&s=09" target="_blank" rel="noopener noreferrer" aria-label="X">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.92c-.66.3-1.37.5-2.12.6.76-.46 1.34-1.2 1.61-2.07-.71.42-1.5.72-2.34.88A3.72 3.72 0 0016.5 4c-2.06 0-3.73 1.68-3.73 3.75 0 .29.03.57.09.84C9.7 8.45 6.2 6.7 3.9 4.06c-.32.54-.5 1.17-.5 1.84 0 1.27.64 2.39 1.62 3.05-.6-.02-1.17-.18-1.66-.46v.05c0 1.8 1.27 3.3 2.95 3.63-.31.08-.63.12-.96.12-.23 0-.46-.02-.68-.06.46 1.42 1.79 2.45 3.36 2.48A7.47 7.47 0 012 19.54a10.53 10.53 0 005.7 1.67c6.84 0 10.58-5.66 10.58-10.57v-.48A7.55 7.55 0 0022 5.92z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/thakurmandeep.rajput.1?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.5 9.87v-6.99H8.9v-2.88h1.6V9.41c0-1.57.93-2.44 2.36-2.44.68 0 1.39.12 1.39.12v1.53h-.78c-.77 0-1.01.48-1.01.97v1.17h1.72l-.28 2.88h-1.44V21.9A10 10 0 0022 12z"/></svg>
+            </a>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="reveal" aria-labelledby="about-heading">
+        <div class="section-head">
+          <h3 id="about-heading">About</h3>
+        </div>
+        <div class="card">
+          <p class="muted">B.Tech — Computer Science & Engineering, Bharat Institute of Technology, Meerut (2022–2026), CGPA 8.12/10. Intern at Prodesk IT — worked on web development and data-related front-end tasks. I blend data analytics with front-end knowledge to build interactive dashboards and user-friendly visualizations. Passionate about public speaking, debate, and poetry reading & writing in Hindi and English. Published author: <em>Love In Upside Down World</em> (Notion Press, 2024).</p>
+          <p style="margin-top:10px;font-weight:600">Tata Group Data Analytics Job Simulation on Forage — August 2025 (Generative AI & Financial Services simulation).</p>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="reveal" aria-labelledby="skills-heading">
+        <div class="section-head"><h3 id="skills-heading">Skills</h3></div>
+        <div class="grid-3" style="margin-top:12px">
+          <div class="card">
+            <h4>Data & Visualization</h4>
+            <div style="margin-top:10px" class="skills">
+              <span class="skill">Power BI</span>
+              <span class="skill">Tableau</span>
+              <span class="skill">Advanced Excel</span>
+              <span class="skill">DAX</span>
+              <span class="skill">Data Storytelling</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Programming & AI</h4>
+            <div style="margin-top:10px" class="skills">
+              <span class="skill">Python (Pandas, Matplotlib)</span>
+              <span class="skill">Generative AI</span>
+              <span class="skill">Prompt Engineering</span>
+              <span class="skill">ChatGPT for data analysis</span>
+              <span class="skill">AI-driven automation</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Web & Tools</h4>
+            <div style="margin-top:10px" class="skills">
+              <span class="skill">HTML</span>
+              <span class="skill">CSS</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">GitHub</span>
+              <span class="skill">PostgreSQL / pgAdmin</span>
+              <span class="skill">Power Query</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section id="certifications" class="reveal" aria-labelledby="certs-heading">
+        <div class="section-head"><h3 id="certs-heading">Certifications</h3></div>
+        <div class="card">
+          <h4>Generative AI Job Simulation — Forage (Tata Group simulation)</h4>
+          <p class="muted small">Hands-on Generative AI simulation focused on applying AI for business & analytics tasks.</p>
+          <p><a class="badge" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_j29L3b5gELky36zui_1755345450389_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View Certificate</a></p>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="reveal" aria-labelledby="projects-heading">
+        <div class="section-head"><h3 id="projects-heading">Selected Projects</h3></div>
+        <div class="projects-list">
+          <article class="card project-item">
+            <div class="thumb" aria-hidden="true">BI</div>
+            <div>
+              <h4 style="margin:0"><a href="https://github.com/mr-mandeeprana/DASHBOARD-BI.git" target="_blank" rel="noopener noreferrer">Power BI Dashboard</a></h4>
+              <p class="muted small">End-to-end Power BI dashboard integrating multiple data sources, KPIs and DAX measures to monitor sales & operations.</p>
+            </div>
+          </article>
+
+          <article class="card project-item">
+            <div class="thumb" aria-hidden="true">EX</div>
+            <div>
+              <h4 style="margin:0"><a href="https://github.com/mr-mandeeprana/Hospital_emergency_room_dashboard.git" target="_blank" rel="noopener noreferrer">Advanced Excel — ER Dashboard</a></h4>
+              <p class="muted small">Interactive Excel dashboard for hospital emergency room metrics and operational decision support.</p>
+            </div>
+          </article>
+
+          <article class="card project-item">
+            <div class="thumb" aria-hidden="true">SQL</div>
+            <div>
+              <h4 style="margin:0"><a href="https://github.com/mr-mandeeprana/SQL-Online-Bookstore-Management-System.git" target="_blank" rel="noopener noreferrer">SQL Online Bookstore</a></h4>
+              <p class="muted small">PostgreSQL-based bookstore system with structured schema, complex queries and reporting scripts.</p>
+            </div>
+          </article>
+
+          <article class="card project-item">
+            <div class="thumb" aria-hidden="true">TB</div>
+            <div>
+              <h4 style="margin:0"><a href="https://github.com/mr-mandeeprana/-Interactive-Sales-Dashboard-Tableau.git" target="_blank" rel="noopener noreferrer">Tableau Interactive Sales Dashboard</a></h4>
+              <p class="muted small">Interactive Tableau visualization with filters, maps and actionable sales insights.</p>
+            </div>
+          </article>
+
+          <article class="card project-item">
+            <div class="thumb" aria-hidden="true">IN</div>
+            <div>
+              <h4 style="margin:0"><a href="https://github.com/mr-mandeeprana/Prodesk-IT-Intership-Projects.git" target="_blank" rel="noopener noreferrer">Prodesk IT — Internship Projects</a></h4>
+              <p class="muted small">Collection of front-end and analytics-focused internship projects completed during Prodesk IT internship.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <section id="publications" class="reveal" aria-labelledby="pubs-heading">
+        <div class="section-head"><h3 id="pubs-heading">Publications</h3></div>
+        <div class="card">
+          <h4>📖 Love In Upside Down World</h4>
+          <p class="muted small">Love In Upside Down World — non-fiction on love & loss (Notion Press, 2024).</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <a class="badge" href="https://www.amazon.in/Love-Upside-Down-World-Mandeep/dp/B0D79HW2D4" target="_blank" rel="noopener noreferrer">Amazon</a>
+            <a class="badge" href="https://notionpress.com/in/read/love-in-upside-down-world-hardcover/" target="_blank" rel="noopener noreferrer">Notion Press</a>
+            <a class="badge" href="https://books.google.co.in/books/about/Love_in_Upside_Down_World.html?id=9OTR0AEACAAJ&redir_esc=y" target="_blank" rel="noopener noreferrer">Google Books</a>
+            <a class="badge" href="https://www.flipkart.com/love-upside-down-world/p/itme9083421d8a8c" target="_blank" rel="noopener noreferrer">Flipkart</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERFORMING & WRITING -->
+      <section id="performing" class="reveal" aria-labelledby="perf-heading">
+        <div class="section-head"><h3 id="perf-heading">Performing & Writing</h3></div>
+        <div class="card">
+          <p class="muted">Public speaking, debate, poetry reading & writing in Hindi and English. Available for readings, spoken-word events and workshops.</p>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="reveal" aria-labelledby="contact-heading">
+        <div class="section-head"><h3 id="contact-heading">Contact</h3></div>
+        <div class="contact-grid">
+          <div class="card">
+            <p><strong>Email:</strong> <a href="mailto:mr.mandeeprana52@gmail.com">mr.mandeeprana52@gmail.com</a></p>
+            <p><strong>Phone:</strong> +91 86309 78119</p>
+            <p><strong>Profiles:</strong> <a href="https://github.com/mr-mandeeprana" target="_blank" rel="noopener noreferrer">GitHub</a> • <a href="https://www.linkedin.com/in/mandeep-rana-a169b8241/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+          </div>
+
+          <div class="card">
+            <p class="muted">Send a message (opens your email client):</p>
+            <form id="contact-form" onsubmit="return sendMail();">
+              <input id="subject" placeholder="Subject" aria-label="Subject" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid var(--glass-border);background:transparent;color:var(--text)">
+              <textarea id="message" placeholder="Write your message..." aria-label="Message" rows="5" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--glass-border);background:transparent;color:var(--text)"></textarea>
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <button class="cta" type="submit">Send</button>
+                <button type="reset" style="padding:8px;border-radius:8px;border:1px solid var(--glass-border);background:transparent;color:var(--muted)">Reset</button>
+              </div>
+            </form>
+
+            <div style="margin-top:12px" class="muted small">Other project links</div>
+            <ul style="margin:8px 0 0 18px">
+              <li><a href="https://github.com/mr-mandeeprana/DASHBOARD-BI.git" target="_blank" rel="noopener noreferrer">Power BI project</a></li>
+              <li><a href="https://github.com/mr-mandeeprana/Hospital_emergency_room_dashboard.git" target="_blank" rel="noopener noreferrer">Advanced Excel dashboard</a></li>
+              <li><a href="https://github.com/mr-mandeeprana/SQL-Online-Bookstore-Management-System.git" target="_blank" rel="noopener noreferrer">SQL Bookstore</a></li>
+              <li><a href="https://github.com/mr-mandeeprana/-Interactive-Sales-Dashboard-Tableau.git" target="_blank" rel="noopener noreferrer">Tableau dashboard</a></li>
+              <li><a href="https://github.com/mr-mandeeprana/Prodesk-IT-Intership-Projects.git" target="_blank" rel="noopener noreferrer">All internship projects</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <span id="year"></span> <strong>Mandeep Rana</strong> — Built with ❤️</div>
+        <div style="color:var(--muted);font-size:13px">Public speaking, debate, poetry reading & writing in Hindi and English.</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- --------------- SCRIPTS --------------- -->
+  <script>
+    // Configuration: path to resume file (update or place your resume at /assets/resume.pdf)
+    const RESUME_PATH = '/assets/resume.pdf';
+
+    // If resume file not found on server (404), fallback link will be mailto:
+    (function setupResumeLink() {
+      const link = document.getElementById('download-resume');
+      // We attempt a HEAD request to see if resume exists. If not, fallback to mailto.
+      fetch(RESUME_PATH, { method: 'HEAD' })
+        .then(r => {
+          if (!r.ok) {
+            // fallback - change link to mailto
+            link.setAttribute('href', 'mailto:mr.mandeeprana52@gmail.com?subject=Resume%20Request&body=Please%20send%20me%20your%20resume.');
+          } else {
+            link.setAttribute('href', RESUME_PATH);
+          }
+        })
+        .catch(() => {
+          link.setAttribute('href', 'mailto:mr.mandeeprana52@gmail.com?subject=Resume%20Request&body=Please%20send%20me%20your%20resume.');
+        });
+    })();
+
+    // Simple mailto form
+    function sendMail(){
+      const subject = encodeURIComponent(document.getElementById('subject').value || 'Hello');
+      const body = encodeURIComponent(document.getElementById('message').value || 'Hi%20Mandeep,');
+      const mail = `mailto:mr.mandeeprana52@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = mail;
+      return false;
+    }
+
+    // IntersectionObserver reveal
+    (function revealOnScroll(){
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+
+    // Mobile nav toggle (progressive enhancement for very small screens)
+    (function mobileNav(){
+      const btn = document.createElement('button');
+      btn.className = 'menu-btn';
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent = 'Menu';
+      btn.style.display = 'none';
+      btn.style.background='transparent';
+      btn.style.border='1px solid rgba(255,255,255,0.06)';
+      btn.style.color='var(--muted)';
+      btn.style.padding='8px';
+      btn.style.borderRadius='8px';
+      // show button only on small screens
+      function update(){
+        if (window.innerWidth <= 700){
+          btn.style.display = 'inline-block';
+          document.querySelector('header').appendChild(btn);
+        } else {
+          btn.style.display = 'none';
+          if (btn.parentNode) btn.parentNode.removeChild(btn);
+        }
+      }
+      window.addEventListener('resize', update);
+      update();
+      btn.addEventListener('click', () => {
+        const nav = document.querySelector('nav');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.gap = '10px';
+        nav.style.background = 'transparent';
+      });
+    })();
+
+    // current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // smooth scroll for anchor links
+    (function smoothScroll(){
+      document.documentElement.style.scrollBehavior = 'smooth';
+    })();
+  </script>
+</body>
+</html>
